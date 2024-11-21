@@ -29,21 +29,75 @@ body {
   height: 100%;
   background-color: var(--main-color);
   color: var(--text-1);
-  padding: 25px;
+  /* padding: 25px; */
 }
 
 .name {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+  padding: 25px 25px 0px;
 }
 
-.projects-title {
+.projects-title,
+.tags-title {
   display: flex;
   justify-content: space-between;
+  padding: 0px 25px;
+  margin-top: 4rem;
 }
 
-.project-add {
+.project-add,
+.tag-add {
   color: var(--text-2);
   font-size: 1.5rem;
+}
+
+.project-add:hover,
+.tag-add:hover {
+  cursor: pointer;
+  color: #2b7bff;
+}
+
+#projects,
+#tags {
+  list-style: none;
+  margin: 10px 0px;
+}
+
+.project,
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 25px;
+}
+
+.project:hover,
+.tag:hover {
+  cursor: pointer;
+  background-color: #424242;
+}
+
+.project:hover .project-count {
+  background-color: #848e92;
+}
+
+.tag > p {
+  color: yellow;
+}
+
+.project > div {
+  background-color: #424242;
+  /* padding: 5px; */
+}
+
+.project-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
 }
 
 .main {
