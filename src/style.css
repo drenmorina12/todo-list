@@ -6,6 +6,8 @@
   --text-1: #ffffff;
   --text-2: #a2a299;
   --text-3: #777777;
+  --font-big: 24px;
+  --font-small: 16px;
 }
 
 * {
@@ -35,6 +37,7 @@ body {
 .name {
   margin-bottom: 2rem;
   padding: 25px 25px 0px;
+  font-size: var(--font-big);
 }
 
 .projects-title,
@@ -43,6 +46,7 @@ body {
   justify-content: space-between;
   padding: 0px 25px;
   margin-top: 4rem;
+  font-size: var(--font-small);
 }
 
 .project-add,
@@ -81,6 +85,11 @@ body {
   background-color: #848e92;
 }
 
+.tag > p,
+.project > p {
+  font-size: var(--font-small);
+}
+
 .tag > p {
   color: yellow;
 }
@@ -103,4 +112,37 @@ body {
 .main {
   background-color: var(--bg-color);
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 30px;
+}
+
+.current-project {
+  height: 30px;
+  width: fit-content;
+  background-color: var(--main-color);
+  color: var(--text-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 25px;
+  border-radius: 30px;
+}
+
+.current-project > p {
+  font-size: var(--font-big);
+}
+
+#list-section {
+  display: flex;
+  gap: 30px;
+  flex: 1;
+}
+
+.list-container {
+  width: 550px;
+  height: 100%;
+  background-color: var(--main-color);
+  border-radius: 20px;
 }
