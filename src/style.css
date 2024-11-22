@@ -2,7 +2,7 @@
   --main-color: #161616;
   /* --bg-color: #f4eae0; */
   --bg-color: pink;
-
+  --hover-1: #424242;
   --text-1: #ffffff;
   --text-2: #a2a299;
   --text-3: #777777;
@@ -78,7 +78,7 @@ body {
 .project:hover,
 .tag:hover {
   cursor: pointer;
-  background-color: #424242;
+  background-color: var(--hover-1);
 }
 
 .project:hover .project-count {
@@ -95,7 +95,7 @@ body {
 }
 
 .project > div {
-  background-color: #424242;
+  background-color: var(--hover-1);
   /* padding: 5px; */
 }
 
@@ -140,9 +140,94 @@ body {
   flex: 1;
 }
 
+#todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
 .list-container {
   width: 550px;
   height: 100%;
   background-color: var(--main-color);
   border-radius: 20px;
+  /* padding: 10px; */
+}
+
+.todo-item {
+  color: var(--text-1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  /* border: 1px solid white; */
+  border-radius: 10px;
+}
+
+.todo-item:hover {
+  cursor: pointer;
+  background-color: var(--hover-1);
+}
+
+.status-circle {
+  height: 20px;
+  width: 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.task-input-field {
+  height: 65px;
+  background-color: #252526;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 15px;
+}
+
+#task-input {
+  padding: 10px;
+  background-color: var(--hover-1);
+  color: var(--text-1);
+  border: 1px solid var(--hover-1);
+  border-radius: 20px;
+  flex: 1;
+  height: 38px;
+}
+
+#task-input:hover {
+  border: 1px solid #2b7bff;
+  transition: border 0.5s;
+}
+
+#task-input:focus {
+  border: 1px solid #2b7bff;
+  outline: 0;
+  caret-color: #2b7bff;
+}
+
+.arrow-button {
+  height: 40px;
+  width: 40px;
+  background-color: var(--hover-1);
+  border-radius: 20px;
+  border: 2px solid #252526;
+}
+
+.arrow-button:hover {
+  background-color: #2b7bff;
+  border: 2px solid #2b7bff;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in, border 0.3s ease-in;
+  /* transition: border 0.5s; */
 }
