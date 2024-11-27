@@ -87,12 +87,12 @@
       const notesInput = document.querySelector("#notes-input");
       notesInput.addEventListener("input", () => {
         if (notesInput.scrollHeight > 120) {
-          console.log("SEWWWWWWY");
           notesInput.style.overflow = "auto";
         } else {
           notesInput.style.height = "auto";
+          notesInput.style.overflow = "hidden";
+
           notesInput.style.height = `${notesInput.scrollHeight}px`;
-          console.log(notesInput.scrollHeight + "px");
         }
       });
     </script>
