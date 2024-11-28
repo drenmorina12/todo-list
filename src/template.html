@@ -15,6 +15,19 @@
           <h3 class="project-add">+</h3>
         </section>
         <ul id="projects">
+          <dialog id="projects-dialog" open>
+            <form id="project-add-form">
+              <label for="project-title">CREATE A PROJECT</label>
+              <input
+                type="text"
+                id="project-title"
+                name="project-title"
+                required
+                autofocus
+              />
+            </form>
+            <div class="form-buttons"></div>
+          </dialog>
           <li class="project">
             <p>Personal</p>
             <div class="project-count"></div>
