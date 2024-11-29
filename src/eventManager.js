@@ -1,17 +1,13 @@
-const addProject = document.querySelector(".project-add");
-const cancelDialog = document.querySelector("#cancel-btn");
+import { showDialog, closeDialog } from "./domManager";
+
+const projectAddBtn = document.querySelector(".project-add");
+const cancelDialogBtn = document.querySelector("#cancel-btn");
 const dialog = document.querySelector("#projects-dialog");
 
 function initEvents() {
-  addProject.addEventListener("click", function () {
-    dialog.showModal();
-    // dialog.style.display = "flex";
-  });
+  projectAddBtn.addEventListener("click", () => showDialog(dialog));
 
-  cancelDialog.addEventListener("click", () => {
-    dialog.close();
-    // dialog.style.display = "none";
-  });
+  cancelDialogBtn.addEventListener("click", () => closeDialog(dialog));
 }
 
 export { initEvents };
