@@ -15,7 +15,7 @@
           <h3 class="project-add">+</h3>
         </section>
         <ul id="projects">
-          <dialog id="projects-dialog" open>
+          <dialog id="projects-dialog">
             <form id="project-add-form">
               <label for="project-title">CREATE A PROJECT</label>
               <input
@@ -26,7 +26,10 @@
                 autofocus
               />
             </form>
-            <div class="form-buttons"></div>
+            <div class="form-buttons">
+              <button id="cancel-btn">Cancel</button>
+              <button id="create-btn">Create</button>
+            </div>
           </dialog>
           <li class="project">
             <p>Personal</p>
