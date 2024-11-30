@@ -1,34 +1,27 @@
-import { Project, Todo } from "./dataModel";
+import { Project, Todo, ProjectManager } from "./dataModel";
 import { renderTodos } from "./domManager";
 
-// let project1 = new Project("Project 1");
+const projects = new ProjectManager();
 
-// let currentProject = project1;
+function createProject(title) {
+  let project = new Project(title);
+  projects.addProject(project);
+}
 
-// let todo1 = new Todo("Todo1", "today", 1);
-// let todo2 = new Todo("Todo2", "tomorrow", 2);
-// let todo3 = new Todo("SEWYYY", "1", 1);
+createProject("Projekti2");
 
-let project2 = new Project("Project 1");
+let currentProject = projects.getProject(1);
 
 let todo11 = new Todo("Todo1111", "today", 1);
 let todo22 = new Todo("MUGIWARA", "tomorrow", 2);
 let todo33 = new Todo("SEWYYY", "1", 1);
 
-project2.addTodo(todo11);
-project2.addTodo(todo22);
-project2.addTodo(todo33);
-// project2.addTodo(todo1);
-
-// currentProject.addTodo(todo1);
-// currentProject.addTodo(todo2);
-// currentProject.addTodo(todo3);
-
-// todo1.toggleCompleted();
-// todo1.addDescription("Helloooo");
+currentProject.addTodo(todo11);
+currentProject.addTodo(todo22);
+currentProject.addTodo(todo33);
 
 function createNewTodo({
-  project = project2,
+  project = currentProject,
   title,
   dueDate = "",
   priority = 0,
@@ -41,7 +34,7 @@ function createNewTodo({
 
 function test() {
   // let todoList = currentProject.getTodos();
-  let todoList2 = project2.getTodos();
+  let todoList2 = currentProject.getTodos();
 
   // renderTodos(todoList);
   renderTodos(todoList2);
