@@ -32,12 +32,15 @@ function createTodoList() {
 
 function renderTodos(todoArray) {
   const todoContainer = document.querySelector("#todo-container");
+  todoContainer.textContent = "";
+
   const todoList = createTodoList();
   todoArray.forEach((todo) => {
     const todoElement = createTodoElement(todo);
     todoList.appendChild(todoElement);
   });
 
+  // Appends the list before the input sections
   todoContainer.insertBefore(todoList, todoContainer.firstChild);
 }
 
