@@ -39,7 +39,7 @@ function renderTodos(todoArray) {
   const todoList = createTodoList();
   todoArray.forEach((todo) => {
     const todoElement = createTodoElement(todo);
-    todoList.appendChild(todoElement);
+    todoList.insertBefore(todoElement, todoList.firstChild);
   });
 
   // Appends the list before the input sections

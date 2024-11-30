@@ -18,7 +18,7 @@ let todo33 = new Todo("SEWYYY", "1", 1);
 project2.addTodo(todo11);
 project2.addTodo(todo22);
 project2.addTodo(todo33);
-project2.addTodo(todo1);
+// project2.addTodo(todo1);
 
 // currentProject.addTodo(todo1);
 // currentProject.addTodo(todo2);
