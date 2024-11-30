@@ -1,5 +1,5 @@
 import { Project, Todo, ProjectManager } from "./dataModel";
-import { renderTodos } from "./domManager";
+import { renderTodos, renderProjects } from "./domManager";
 
 const projects = new ProjectManager();
 
@@ -9,6 +9,10 @@ function createProject(title) {
 }
 
 createProject("Projekti2");
+createProject("Mugiwara");
+createProject("SUI");
+
+console.log(projects.getAllProjects);
 
 let currentProject = projects.getProject(1);
 
@@ -38,6 +42,7 @@ function test() {
 
   // renderTodos(todoList);
   renderTodos(todoList2);
+  renderProjects(projects.getAllProjects());
 }
 
 export { test, createNewTodo };

@@ -63,4 +63,37 @@ function processTodoForm(event) {
   form.reset();
 }
 
-export { showDialog, closeDialog, renderTodos, processTodoForm };
+function createProjectElement(project) {
+  const projectContainer = document.createElement("li");
+  projectContainer.classList.add("project");
+
+  const projectTitle = document.createElement("p");
+  projectTitle.textContent = project.title;
+
+  const projectCount = document.createElement("div");
+  projectCount.classList.add("project-count");
+  projectCount.textContent = project.getTodos().length;
+
+  projectContainer.appendChild(projectTitle);
+  projectContainer.appendChild(projectCount);
+
+  return projectContainer;
+}
+
+function renderProjects(projectArray) {
+  const projects = document.querySelector("#projects");
+  projects.textContent = "";
+
+  projectArray.forEach((project) => {
+    const projectElement = createProjectElement(project);
+    projects.appendChild(projectElement);
+  });
+}
+
+export {
+  showDialog,
+  closeDialog,
+  renderTodos,
+  processTodoForm,
+  renderProjects,
+};
