@@ -1,3 +1,5 @@
+import { createNewTodo } from "./appController";
+
 function showDialog(dialog) {
   dialog.showModal();
 }
@@ -31,7 +33,7 @@ function createTodoList() {
 }
 
 function renderTodos(todoArray) {
-  const todoContainer = document.querySelector("#todo-container");
+  const todoContainer = document.querySelector("#todo-list-wrapper");
   todoContainer.textContent = "";
 
   const todoList = createTodoList();
@@ -44,4 +46,21 @@ function renderTodos(todoArray) {
   todoContainer.insertBefore(todoList, todoContainer.firstChild);
 }
 
-export { showDialog, closeDialog, renderTodos };
+function processTodoForm(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const title = document.querySelector("#task-input").value.trim();
+  const dueDate = "";
+  const priority = 0;
+
+  if (!title) {
+    alert("Taks title cannot be empty");
+    return;
+  }
+
+  createNewTodo({ title, dueDate, priority });
+  form.reset();
+}
+
+export { showDialog, closeDialog, renderTodos, processTodoForm };
