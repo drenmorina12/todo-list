@@ -186,9 +186,17 @@ body {
 
 .task-input-field {
   height: 65px;
+}
+
+.task-input-field,
+#task-input-form {
   background-color: #252526;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+#task-input-form {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

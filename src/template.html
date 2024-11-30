@@ -66,24 +66,28 @@
         </div>
         <div id="list-section">
           <div id="todo-container" class="list-container">
-            <!-- <ul id="todo-list">
-              <li class="todo-item">
-                <div class="status-circle"></div>
-                <p class="todo-title">Item title</p>
-              </li>
-              <li class="todo-item">
-                <div class="status-circle"></div>
-                <p>Second Item title</p>
-              </li>
-            </ul> -->
+            <div id="todo-list-wrapper">
+              <!-- <ul id="todo-list">
+                <li class="todo-item">
+                  <div class="status-circle"></div>
+                  <p class="todo-title">Item title</p>
+                </li>
+                <li class="todo-item">
+                  <div class="status-circle"></div>
+                  <p>Second Item title</p>
+                </li>
+              </ul> -->
+            </div>
             <div class="task-input-field">
-              <input
-                type="text"
-                id="task-input"
-                name="task-title"
-                placeholder="Click to quickly add a task"
-              />
-              <div class="arrow-button"></div>
+              <form id="task-input-form">
+                <input
+                  type="text"
+                  id="task-input"
+                  name="task-title"
+                  placeholder="Click to quickly add a task"
+                />
+                <div class="arrow-button"></div>
+              </form>
             </div>
           </div>
           <div id="todo-info" class="list-container">
