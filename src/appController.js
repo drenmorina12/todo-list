@@ -34,6 +34,7 @@ function createNewTodo({
   project.addTodo(todo);
 
   renderTodos(project.getTodos());
+  renderProjects(projects.getAllProjects());
 }
 
 function test() {
