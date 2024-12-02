@@ -66,6 +66,7 @@ function processTodoForm(event) {
 function createProjectElement(project) {
   const projectContainer = document.createElement("li");
   projectContainer.classList.add("project");
+  projectContainer.dataset.id = project.id;
 
   const projectTitle = document.createElement("p");
   projectTitle.textContent = project.title;
