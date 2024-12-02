@@ -1,5 +1,5 @@
 import { Project, Todo, ProjectManager } from "./dataModel";
-import { renderTodos, renderProjects } from "./domManager";
+import { renderTodos, renderProjects, changeProjectTitle } from "./domManager";
 
 const projects = new ProjectManager();
 
@@ -8,21 +8,29 @@ function createProject(title) {
   projects.addProject(project);
 }
 
-createProject("Projekti2");
-createProject("Mugiwara");
-createProject("SUI");
+let currentProject = null;
 
-console.log(projects.getAllProjects);
+function tempTesting() {
+  createProject("Projekti2");
+  createProject("Mugiwara");
+  createProject("SUI");
 
-let currentProject = projects.getProject(1);
+  console.log(projects.getAllProjects);
 
-let todo11 = new Todo("Todo1111", "today", 1);
-let todo22 = new Todo("MUGIWARA", "tomorrow", 2);
-let todo33 = new Todo("SEWYYY", "1", 1);
+  currentProject = projects.getProject(1);
 
-currentProject.addTodo(todo11);
-currentProject.addTodo(todo22);
-currentProject.addTodo(todo33);
+  let todo11 = new Todo("Todo1111", "today", 1);
+  let todo22 = new Todo("MUGIWARA", "tomorrow", 2);
+  let todo33 = new Todo("SEWYYY", "1", 1);
+
+  projects.getProject(1).addTodo(todo11);
+  projects.getProject(1).addTodo(todo22);
+  projects.getProject(1).addTodo(todo33);
+
+  projects.getProject(3).addTodo(todo11);
+}
+
+tempTesting();
 
 function createNewTodo({
   project = currentProject,
@@ -33,17 +41,25 @@ function createNewTodo({
   let todo = new Todo(title, dueDate, priority);
   project.addTodo(todo);
 
-  renderTodos(project.getTodos());
+  renderProjectsAndTodos();
+}
+
+function renderProjectsAndTodos() {
+  renderTodos(currentProject.getTodos());
   renderProjects(projects.getAllProjects());
+  changeProjectTitle(currentProject);
+}
+
+function switchCurrentProject(event) {
+  const clickedProject = event.target.closest(".project");
+  const clickedProjectId = parseInt(clickedProject.dataset.id);
+
+  currentProject = projects.getProject(clickedProjectId);
+  renderProjectsAndTodos();
 }
 
 function test() {
-  // let todoList = currentProject.getTodos();
-  let todoList2 = currentProject.getTodos();
-
-  // renderTodos(todoList);
-  renderTodos(todoList2);
-  renderProjects(projects.getAllProjects());
+  renderProjectsAndTodos();
 }
 
-export { test, createNewTodo };
+export { test, createNewTodo, switchCurrentProject };

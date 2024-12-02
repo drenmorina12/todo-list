@@ -91,10 +91,17 @@ function renderProjects(projectArray) {
   });
 }
 
+function changeProjectTitle(project) {
+  const currentProjectName = document.querySelector(".current-project-name");
+
+  currentProjectName.textContent = project.title;
+}
+
 export {
   showDialog,
   closeDialog,
   renderTodos,
   processTodoForm,
   renderProjects,
+  changeProjectTitle,
 };
