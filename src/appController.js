@@ -58,8 +58,19 @@ function switchCurrentProject(event) {
   renderProjectsAndTodos();
 }
 
+function createProjectFromForm(event) {
+  const projectTitle = document.querySelector("#project-title").value;
+  const form = event.target;
+
+  event.preventDefault();
+  createProject(projectTitle);
+  renderProjectsAndTodos();
+
+  form.reset();
+}
+
 function test() {
   renderProjectsAndTodos();
 }
 
-export { test, createNewTodo, switchCurrentProject };
+export { test, createNewTodo, switchCurrentProject, createProjectFromForm };
