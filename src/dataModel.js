@@ -1,11 +1,14 @@
 class Project {
+  #idcounter;
   constructor(title) {
     this.title = title;
     this.todos = [];
+    this.#idcounter = 1;
   }
 
   addTodo(todo) {
     this.todos.push(todo);
+    todo.id = this.#idcounter++;
   }
 
   removeTodo(index) {
