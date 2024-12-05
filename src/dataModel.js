@@ -18,6 +18,10 @@ class Project {
   getTodos() {
     return this.todos;
   }
+
+  getTodo(todoId) {
+    return this.todos.find((p) => p.id === todoId);
+  }
 }
 
 class Todo {

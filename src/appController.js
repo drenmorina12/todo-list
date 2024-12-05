@@ -14,6 +14,7 @@ function createProject(title) {
 }
 
 let currentProject = null;
+let currentTodo = null;
 
 function tempTesting() {
   createProject("Projekti2");
@@ -33,6 +34,8 @@ function tempTesting() {
   projects.getProject(1).addTodo(todo33);
 
   projects.getProject(3).addTodo(todo11);
+
+  currentTodo = currentProject.getTodos()[currentProject.getTodos().length - 1];
 }
 
 tempTesting();
@@ -61,6 +64,20 @@ function switchCurrentProject(event) {
 
   currentProject = projects.getProject(clickedProjectId);
   renderProjectsAndTodos();
+  currentTodo = currentProject.getTodos()[currentProject.getTodos().length - 1];
+
+  renderTodoDetails(currentTodo);
+}
+
+function switchCurrentTodo(event) {
+  const clickedTodo = event.target.closest(".todo-item");
+  if (clickedTodo === null) {
+    return;
+  }
+  const clickedTodoId = parseInt(clickedTodo.dataset.id);
+
+  currentTodo = currentProject.getTodo(clickedTodoId);
+  renderTodoDetails(currentTodo);
 }
 
 function createProjectFromForm(event) {
@@ -76,7 +93,13 @@ function createProjectFromForm(event) {
 
 function test() {
   renderProjectsAndTodos();
-  renderTodoDetails(currentProject.getTodos()[0]);
+  renderTodoDetails(currentTodo);
 }
 
-export { test, createNewTodo, switchCurrentProject, createProjectFromForm };
+export {
+  test,
+  createNewTodo,
+  switchCurrentProject,
+  createProjectFromForm,
+  switchCurrentTodo,
+};

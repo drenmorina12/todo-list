@@ -4,7 +4,11 @@ import {
   processTodoForm,
   delegateNotesInputHeight,
 } from "./domManager";
-import { switchCurrentProject, createProjectFromForm } from "./appController";
+import {
+  switchCurrentProject,
+  createProjectFromForm,
+  switchCurrentTodo,
+} from "./appController";
 
 const projectAddBtn = document.querySelector(".project-add");
 const cancelDialogBtn = document.querySelector("#cancel-btn");
@@ -13,6 +17,7 @@ const dialog = document.querySelector("#projects-dialog");
 const taskCreateForm = document.querySelector("#task-input-form");
 const projects = document.querySelector("#projects");
 const todoInfo = document.querySelector("#todo-info");
+const todoListWrapper = document.querySelector("#todo-list-wrapper");
 
 function initEvents() {
   projectAddBtn.addEventListener("click", () => showDialog(dialog));
@@ -24,6 +29,7 @@ function initEvents() {
   taskCreateForm.addEventListener("submit", processTodoForm);
   projects.addEventListener("click", switchCurrentProject);
   todoInfo.addEventListener("input", delegateNotesInputHeight);
+  todoListWrapper.addEventListener("click", switchCurrentTodo);
 }
 
 export { initEvents };

@@ -11,6 +11,7 @@ function closeDialog(dialog) {
 function createTodoElement(todo) {
   const todoElement = document.createElement("li");
   todoElement.classList.add("todo-item");
+  todoElement.dataset.id = todo.id;
 
   const statusCircle = document.createElement("div");
   statusCircle.classList.add("status-circle");
@@ -66,6 +67,10 @@ function processTodoForm(event) {
 function renderTodoDetails(todo) {
   const todoInfoContainer = document.querySelector("#todo-info");
   todoInfoContainer.textContent = "";
+
+  if (todo === undefined) {
+    return;
+  }
 
   const todoTitle = document.createElement("div");
   todoTitle.classList.add("task-title");
