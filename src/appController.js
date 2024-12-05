@@ -1,5 +1,10 @@
 import { Project, Todo, ProjectManager } from "./dataModel";
-import { renderTodos, renderProjects, changeProjectTitle } from "./domManager";
+import {
+  renderTodos,
+  renderProjects,
+  changeProjectTitle,
+  renderTodoDetails,
+} from "./domManager";
 
 const projects = new ProjectManager();
 
@@ -71,6 +76,7 @@ function createProjectFromForm(event) {
 
 function test() {
   renderProjectsAndTodos();
+  renderTodoDetails(currentProject.getTodos()[0]);
 }
 
 export { test, createNewTodo, switchCurrentProject, createProjectFromForm };

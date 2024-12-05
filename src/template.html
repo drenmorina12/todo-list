@@ -93,32 +93,31 @@
             </div>
           </div>
           <div id="todo-info" class="list-container">
-            <div class="task-title">Title of the selected todo</div>
+            <!-- <div class="task-title">Title of the selected todo</div>
             <div class="due-date">24.12.2020</div>
             <div class="notes">NOTES</div>
             <textarea
-              type="text"
               id="notes-input"
               name="notes-input"
               placeholder="Insert your notes here"
               rows="1"
-            ></textarea>
+            ></textarea> -->
           </div>
         </div>
       </div>
     </div>
     <script>
-      const notesInput = document.querySelector("#notes-input");
-      notesInput.addEventListener("input", () => {
-        if (notesInput.scrollHeight > 120) {
-          notesInput.style.overflow = "auto";
-        } else {
-          notesInput.style.height = "auto";
-          notesInput.style.overflow = "hidden";
+      // const notesInput = document.querySelector("#notes-input");
+      // notesInput.addEventListener("input", () => {
+      //   if (notesInput.scrollHeight > 120) {
+      //     notesInput.style.overflow = "auto";
+      //   } else {
+      //     notesInput.style.height = "auto";
+      //     notesInput.style.overflow = "hidden";
 
-          notesInput.style.height = `${notesInput.scrollHeight}px`;
-        }
-      });
+      //     notesInput.style.height = `${notesInput.scrollHeight}px`;
+      //   }
+      // });
     </script>
   </body>
 </html>

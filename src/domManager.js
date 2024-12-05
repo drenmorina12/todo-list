@@ -102,6 +102,12 @@ function notesInputHeight(notesInput) {
   }
 }
 
+function delegateNotesInputHeight(event) {
+  if (event.target.matches("#notes-input")) {
+    notesInputHeight(event.target);
+  }
+}
+
 function createProjectElement(project) {
   const projectContainer = document.createElement("li");
   projectContainer.classList.add("project");
@@ -144,4 +150,5 @@ export {
   renderProjects,
   changeProjectTitle,
   renderTodoDetails,
+  delegateNotesInputHeight,
 };
