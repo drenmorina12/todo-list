@@ -63,6 +63,45 @@ function processTodoForm(event) {
   form.reset();
 }
 
+function renderTodoDetails(todo) {
+  const todoInfoContainer = document.querySelector("#todo-info");
+  todoInfoContainer.textContent = "";
+
+  const todoTitle = document.createElement("div");
+  todoTitle.classList.add("task-title");
+  todoTitle.textContent = todo.title;
+
+  const dueDate = document.createElement("div");
+  dueDate.classList.add("due-date");
+  dueDate.textContent = todo.dueDate;
+
+  const notes = document.createElement("div");
+  notes.classList.add("notes");
+  notes.textContent = "NOTES";
+
+  const notesTextarea = document.createElement("textarea");
+  notesTextarea.id = "notes-input";
+  notesTextarea.name = "notes-input";
+  notesTextarea.placeholder = "Insert your notes here";
+  notesTextarea.rows = "1";
+
+  todoInfoContainer.appendChild(todoTitle);
+  todoInfoContainer.appendChild(dueDate);
+  todoInfoContainer.appendChild(notes);
+  todoInfoContainer.appendChild(notesTextarea);
+}
+
+function notesInputHeight(notesInput) {
+  if (notesInput.scrollHeight > 120) {
+    notesInput.style.overflow = "auto";
+  } else {
+    notesInput.style.height = "auto";
+    notesInput.style.overflow = "hidden";
+
+    notesInput.style.height = `${notesInput.scrollHeight}px`;
+  }
+}
+
 function createProjectElement(project) {
   const projectContainer = document.createElement("li");
   projectContainer.classList.add("project");
@@ -104,4 +143,5 @@ export {
   processTodoForm,
   renderProjects,
   changeProjectTitle,
+  renderTodoDetails,
 };
