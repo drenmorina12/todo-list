@@ -170,11 +170,17 @@ body {
   padding: 10px;
   /* border: 1px solid white; */
   border-radius: 10px;
+  outline: 1px solid var(--main-color);
 }
 
 .todo-item:hover {
   cursor: pointer;
   background-color: var(--hover-1);
+}
+
+.todo-item:focus {
+  outline: 1px solid #2b7bff;
+  transition: outline 0.5s;
 }
 
 .status-circle {

@@ -12,6 +12,7 @@ function createTodoElement(todo) {
   const todoElement = document.createElement("li");
   todoElement.classList.add("todo-item");
   todoElement.dataset.id = todo.id;
+  todoElement.setAttribute("tabindex", "0");
 
   const statusCircle = document.createElement("div");
   statusCircle.classList.add("status-circle");
