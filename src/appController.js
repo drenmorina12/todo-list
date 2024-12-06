@@ -101,7 +101,6 @@ function highlightInitialTodo() {
 function test() {
   renderProjectsAndTodos();
   highlightInitialTodo();
-  // currentTodo.classList.add("selected");
   renderTodoDetails(currentTodo);
 }
 

@@ -102,11 +102,15 @@ function renderTodoDetails(todo) {
   notesTextarea.name = "notes-input";
   notesTextarea.placeholder = "Insert your notes here";
   notesTextarea.rows = "1";
+  notesTextarea.textContent =
+    "DJNSKLDMIJKM SDMASJDMSOJD SADJMKJSJDMSAJKDLASMDSA SJALDKSAJKDMASLDK OSIAJDLKASDA IDMSKJDMSAJKDN ASDJMASDJMASID";
 
   todoInfoContainer.appendChild(todoTitle);
   todoInfoContainer.appendChild(dueDate);
   todoInfoContainer.appendChild(notes);
   todoInfoContainer.appendChild(notesTextarea);
+
+  notesInputHeight(notesTextarea);
 }
 
 function notesInputHeight(notesInput) {

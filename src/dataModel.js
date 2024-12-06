@@ -31,7 +31,7 @@ class Todo {
     this.priority = priority;
 
     this.completed = false;
-    this.description = "";
+    this.notes = "";
   }
 
   toggleCompleted() {
@@ -44,8 +44,12 @@ class Todo {
     return this.completed;
   }
 
-  addDescription(description) {
-    this.description = description;
+  addNotes(notes) {
+    this.notes = notes;
+  }
+
+  getNotes() {
+    return this.notes;
   }
 
   changePriority(tag) {
@@ -68,7 +72,7 @@ class ProjectManager {
   }
 
   removeProject(projectId) {
-    const index = this.#projectList.findIndex((p) => p.id === projectId);
+    const inx = this.#projectList.findIndex((p) => p.id === projectId);
     if (index > -1) {
       this.#projectList.splice(index, 1);
     }
