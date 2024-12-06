@@ -9,6 +9,7 @@ import {
   switchCurrentProject,
   createProjectFromForm,
   switchCurrentTodo,
+  updateNote,
 } from "./appController";
 
 const projectAddBtn = document.querySelector(".project-add");
@@ -29,7 +30,10 @@ function initEvents() {
   cancelDialogBtn.addEventListener("click", () => closeDialog(dialog));
   taskCreateForm.addEventListener("submit", processTodoForm);
   projects.addEventListener("click", switchCurrentProject);
-  todoInfo.addEventListener("input", delegateNotesInputHeight);
+  todoInfo.addEventListener("input", (event) => {
+    delegateNotesInputHeight(event);
+    updateNote(event);
+  });
   todoListWrapper.addEventListener("click", (event) => {
     switchCurrentTodo(event);
     showSelectedTodo(event);

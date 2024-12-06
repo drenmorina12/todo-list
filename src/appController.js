@@ -98,6 +98,13 @@ function highlightInitialTodo() {
     .classList.add("selected");
 }
 
+function updateNote(event) {
+  const noteInput = event.target;
+  if (noteInput.matches("#notes-input")) {
+    currentTodo.addNotes(noteInput.value);
+  }
+}
+
 function test() {
   renderProjectsAndTodos();
   highlightInitialTodo();
@@ -110,4 +117,5 @@ export {
   switchCurrentProject,
   createProjectFromForm,
   switchCurrentTodo,
+  updateNote,
 };
