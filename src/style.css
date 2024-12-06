@@ -170,7 +170,8 @@ body {
   padding: 10px;
   /* border: 1px solid white; */
   border-radius: 10px;
-  outline: 1px solid var(--main-color);
+  outline: 1px solid transparent;
+  transition: outline-color 0.5s;
 }
 
 .todo-item:hover {
@@ -178,9 +179,14 @@ body {
   background-color: var(--hover-1);
 }
 
-.todo-item:focus {
+.selected {
   outline: 1px solid #2b7bff;
-  transition: outline 0.5s;
+  /* transition: outline 2s; */
+}
+
+.todo-item:focus {
+  box-shadow: 0 0 0 3px var(--hover-1);
+  transition: box-shadow 0.5s;
 }
 
 .status-circle {

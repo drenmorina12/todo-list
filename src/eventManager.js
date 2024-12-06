@@ -3,6 +3,7 @@ import {
   closeDialog,
   processTodoForm,
   delegateNotesInputHeight,
+  showSelectedTodo,
 } from "./domManager";
 import {
   switchCurrentProject,
@@ -29,7 +30,10 @@ function initEvents() {
   taskCreateForm.addEventListener("submit", processTodoForm);
   projects.addEventListener("click", switchCurrentProject);
   todoInfo.addEventListener("input", delegateNotesInputHeight);
-  todoListWrapper.addEventListener("click", switchCurrentTodo);
+  todoListWrapper.addEventListener("click", (event) => {
+    switchCurrentTodo(event);
+    showSelectedTodo(event);
+  });
 }
 
 export { initEvents };

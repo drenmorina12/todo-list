@@ -67,13 +67,13 @@ function switchCurrentProject(event) {
   currentTodo = currentProject.getTodos()[currentProject.getTodos().length - 1];
 
   renderTodoDetails(currentTodo);
+  highlightInitialTodo();
 }
 
 function switchCurrentTodo(event) {
   const clickedTodo = event.target.closest(".todo-item");
-  if (clickedTodo === null) {
-    return;
-  }
+  if (!clickedTodo) return;
+
   const clickedTodoId = parseInt(clickedTodo.dataset.id);
 
   currentTodo = currentProject.getTodo(clickedTodoId);
@@ -91,8 +91,17 @@ function createProjectFromForm(event) {
   form.reset();
 }
 
+function highlightInitialTodo() {
+  if (!currentTodo) return;
+  document
+    .querySelector(`.todo-item[data-id="${currentTodo.id}"]`)
+    .classList.add("selected");
+}
+
 function test() {
   renderProjectsAndTodos();
+  highlightInitialTodo();
+  // currentTodo.classList.add("selected");
   renderTodoDetails(currentTodo);
 }
 

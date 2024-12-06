@@ -34,6 +34,18 @@ function createTodoList() {
   return todoList;
 }
 
+function showSelectedTodo(event) {
+  const clickedTodo = event.target.closest(".todo-item");
+
+  if (!clickedTodo) return;
+
+  document.querySelectorAll(".todo-item").forEach((todo) => {
+    todo.classList.remove("selected");
+  });
+
+  clickedTodo.classList.add("selected");
+}
+
 function renderTodos(todoArray) {
   const todoContainer = document.querySelector("#todo-list-wrapper");
   todoContainer.textContent = "";
@@ -157,4 +169,5 @@ export {
   changeProjectTitle,
   renderTodoDetails,
   delegateNotesInputHeight,
+  showSelectedTodo,
 };
