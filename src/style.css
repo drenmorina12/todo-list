@@ -189,12 +189,73 @@ body {
   transition: box-shadow 0.5s;
 }
 
-.status-circle {
+.todo-title {
+  width: 100%;
+  flex: 1;
+}
+
+.status-circle,
+.remove-todo {
   height: 20px;
   width: 20px;
   border: 1px solid white;
   border-radius: 10px;
 }
+
+.remove-todo {
+  display: none;
+  /* margin-left: auto; */
+}
+
+.todo-item.checked:hover {
+  background-color: var(--main-color);
+}
+
+.checked .status-circle {
+  background-image: url("icons/check.svg");
+  background-color: #8d8e92;
+}
+
+.checked .remove-todo {
+  display: block;
+  background-image: url("icons/close.svg");
+  background-color: #8d8e92;
+}
+
+.checked .todo-title {
+  opacity: 0.7;
+  transition: opacity 0.5s;
+  position: relative;
+}
+
+.checked .todo-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: gray;
+  transform: translateY(-50%);
+  transition: width 1s ease;
+}
+
+/* Add line with a transition */
+/* .todo-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: gray;
+  transform: translateY(-50%);
+  transition: width 1s ease;
+}
+
+.todo-item.checked .todo-title::after {
+  width: 100%;
+} */
 
 .task-input-field {
   height: 65px;

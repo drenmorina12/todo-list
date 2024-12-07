@@ -21,8 +21,12 @@ function createTodoElement(todo) {
   todoTitle.classList.add("todo-title");
   todoTitle.textContent = todo.title;
 
+  const removeTodo = document.createElement("div");
+  removeTodo.classList.add("remove-todo");
+
   todoElement.appendChild(statusCircle);
   todoElement.appendChild(todoTitle);
+  todoElement.appendChild(removeTodo);
 
   return todoElement;
 }
