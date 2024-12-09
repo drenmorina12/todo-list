@@ -4,6 +4,7 @@ import {
   renderProjects,
   changeProjectTitle,
   renderTodoDetails,
+  showSelectedTodo,
 } from "./domManager";
 
 const projects = new ProjectManager();
@@ -74,10 +75,15 @@ function switchCurrentTodo(event) {
   const clickedTodo = event.target.closest(".todo-item");
   if (!clickedTodo) return;
 
+  if (event.target.classList.contains("status-circle")) {
+    return;
+  }
+
   const clickedTodoId = parseInt(clickedTodo.dataset.id);
 
   currentTodo = currentProject.getTodo(clickedTodoId);
   renderTodoDetails(currentTodo);
+  showSelectedTodo(event);
 }
 
 function createProjectFromForm(event) {

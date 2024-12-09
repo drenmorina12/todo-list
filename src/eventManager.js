@@ -34,10 +34,7 @@ function initEvents() {
     delegateNotesInputHeight(event);
     updateNote(event);
   });
-  todoListWrapper.addEventListener("click", (event) => {
-    switchCurrentTodo(event);
-    showSelectedTodo(event);
-  });
+  todoListWrapper.addEventListener("click", switchCurrentTodo);
 }
 
 export { initEvents };
