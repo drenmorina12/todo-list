@@ -72,18 +72,27 @@ function switchCurrentProject(event) {
 }
 
 function switchCurrentTodo(event) {
+  // TODO: Remove stuff that doesnt fit in this function to other function
   const clickedTodo = event.target.closest(".todo-item");
   if (!clickedTodo) return;
 
+  const clickedTodoId = parseInt(clickedTodo.dataset.id);
+  currentTodo = currentProject.getTodo(clickedTodoId);
+
   if (event.target.classList.contains("status-circle")) {
+    checkTodo();
     return;
   }
 
-  const clickedTodoId = parseInt(clickedTodo.dataset.id);
-
-  currentTodo = currentProject.getTodo(clickedTodoId);
   renderTodoDetails(currentTodo);
   showSelectedTodo(event);
+
+  // TODO
+}
+
+function checkTodo() {
+  currentTodo.toggleCompleted();
+  renderTodos(currentProject.getTodos());
 }
 
 function createProjectFromForm(event) {

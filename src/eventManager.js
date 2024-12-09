@@ -3,7 +3,6 @@ import {
   closeDialog,
   processTodoForm,
   delegateNotesInputHeight,
-  showSelectedTodo,
 } from "./domManager";
 import {
   switchCurrentProject,

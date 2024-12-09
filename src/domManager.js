@@ -13,6 +13,9 @@ function createTodoElement(todo) {
   todoElement.classList.add("todo-item");
   todoElement.dataset.id = todo.id;
   todoElement.setAttribute("tabindex", "0");
+  if (todo.getCompletedStatus()) {
+    todoElement.classList.add("checked");
+  }
 
   const statusCircle = document.createElement("div");
   statusCircle.classList.add("status-circle");
@@ -48,6 +51,12 @@ function showSelectedTodo(event) {
   });
 
   clickedTodo.classList.add("selected");
+}
+
+function showCheckedTodo(event) {
+  const clickedTodo = event.target.closest(".todo-item");
+
+  if (!clickedTodo) return;
 }
 
 function renderTodos(todoArray) {
