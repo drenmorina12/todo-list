@@ -84,6 +84,12 @@ function switchCurrentTodo(event) {
     return;
   }
 
+  if (event.target.classList.contains("remove-todo")) {
+    currentProject.removeTodo(currentTodo);
+    renderProjectsAndTodos();
+    return;
+  }
+
   renderTodoDetails(currentTodo);
   showSelectedTodo(event);
 

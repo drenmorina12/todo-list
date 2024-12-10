@@ -11,8 +11,12 @@ class Project {
     todo.id = this.#idcounter++;
   }
 
-  removeTodo(index) {
-    this.todos.splice(index, 1);
+  removeTodo(todo) {
+    const index = this.todos.indexOf(todo);
+
+    if (index > -1) {
+      this.todos.splice(index, 1);
+    }
   }
 
   getTodos() {
