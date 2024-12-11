@@ -128,10 +128,34 @@ body {
   align-items: center;
   padding: 20px 25px;
   border-radius: 30px;
+  gap: 20px;
 }
 
-.current-project > p {
+.current-project-name {
   font-size: var(--font-big);
+}
+
+.current-project-name::after {
+  content: "";
+  position: absolute;
+  transform: translate(10px, 1px);
+  width: 1px;
+  height: 25px;
+  background-color: #a2a2a2;
+}
+
+.clear-project-btn {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  fill: var(--text-1);
+  transition: fill 0.3s ease-out;
+}
+
+.clear-project-btn:hover {
+  cursor: pointer;
+  fill: #2b7bff;
+  transition: fill 0.3s ease-out;
 }
 
 #list-section {
