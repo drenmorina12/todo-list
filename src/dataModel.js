@@ -76,7 +76,7 @@ class ProjectManager {
   }
 
   removeProject(projectId) {
-    const inx = this.#projectList.findIndex((p) => p.id === projectId);
+    const index = this.#projectList.findIndex((p) => p.id === projectId);
     if (index > -1) {
       this.#projectList.splice(index, 1);
     }

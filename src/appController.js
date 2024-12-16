@@ -22,7 +22,7 @@ function tempTesting() {
   createProject("Mugiwara");
   createProject("SUI");
 
-  console.log(projects.getAllProjects);
+  console.log(projects.getAllProjects());
 
   currentProject = projects.getProject(1);
 
