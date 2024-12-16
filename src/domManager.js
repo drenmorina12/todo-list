@@ -53,12 +53,6 @@ function showSelectedTodo(event) {
   clickedTodo.classList.add("selected");
 }
 
-function showCheckedTodo(event) {
-  const clickedTodo = event.target.closest(".todo-item");
-
-  if (!clickedTodo) return;
-}
-
 function renderTodos(todoArray) {
   const todoContainer = document.querySelector("#todo-list-wrapper");
   todoContainer.textContent = "";
@@ -174,7 +168,14 @@ function changeProjectTitle(project) {
   const currentProjectName = document.querySelector(".current-project-name");
 
   currentProjectName.textContent = project.title;
+  removeClearButton();
 }
+
+// function removeClearButton() {
+//   if (!isRemovableProject()) {
+//     const clearProjectBtn = document.querySelector(".clear-project-btn");
+//   }
+// }
 
 export {
   showDialog,

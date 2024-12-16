@@ -1,9 +1,10 @@
 class Project {
   #idcounter;
-  constructor(title) {
+  constructor(title, isDefault = false) {
     this.title = title;
     this.todos = [];
     this.#idcounter = 1;
+    this.isDefault = isDefault;
   }
 
   addTodo(todo) {
@@ -75,8 +76,9 @@ class ProjectManager {
     this.#projectList.push(project);
   }
 
-  removeProject(projectId) {
-    const index = this.#projectList.findIndex((p) => p.id === projectId);
+  removeProject(project) {
+    const index = this.#projectList.indexOf(project);
+
     if (index > -1) {
       this.#projectList.splice(index, 1);
     }

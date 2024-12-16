@@ -9,8 +9,8 @@ import {
 
 const projects = new ProjectManager();
 
-function createProject(title) {
-  let project = new Project(title);
+function createProject(title, isDefault = false) {
+  let project = new Project(title, isDefault);
   projects.addProject(project);
 }
 
@@ -18,8 +18,8 @@ let currentProject = null;
 let currentTodo = null;
 
 function tempTesting() {
-  createProject("Projekti2");
-  createProject("Mugiwara");
+  createProject("Projekti2", true);
+  createProject("Mugiwara", true);
   createProject("SUI");
 
   console.log(projects.getAllProjects());
@@ -66,10 +66,23 @@ function switchCurrentProject(event) {
   currentProject = projects.getProject(clickedProjectId);
   renderProjectsAndTodos();
   currentTodo = currentProject.getTodos()[currentProject.getTodos().length - 1];
-
   renderTodoDetails(currentTodo);
   highlightInitialTodo();
 }
+
+function removeProject() {
+  projects.removeProject(currentProject);
+  currentProject = projects.getAllProjects()[0];
+  renderProjectsAndTodos();
+}
+
+// function isRemovableProject() {
+//   if (currentProject.isDefault) {
+//     return false;
+//   } else {
+//     return true;
+//   }
+// }
 
 function switchCurrentTodo(event) {
   // TODO: Remove stuff that doesnt fit in this function to other function
@@ -139,4 +152,5 @@ export {
   createProjectFromForm,
   switchCurrentTodo,
   updateNote,
+  removeProject,
 };

@@ -9,6 +9,7 @@ import {
   createProjectFromForm,
   switchCurrentTodo,
   updateNote,
+  removeProject,
 } from "./appController";
 
 const projectAddBtn = document.querySelector(".project-add");
@@ -19,6 +20,7 @@ const taskCreateForm = document.querySelector("#task-input-form");
 const projects = document.querySelector("#projects");
 const todoInfo = document.querySelector("#todo-info");
 const todoListWrapper = document.querySelector("#todo-list-wrapper");
+const projectRemoveBtn = document.querySelector(".clear-project-btn");
 
 function initEvents() {
   projectAddBtn.addEventListener("click", () => showDialog(dialog));
@@ -34,6 +36,7 @@ function initEvents() {
     updateNote(event);
   });
   todoListWrapper.addEventListener("click", switchCurrentTodo);
+  projectRemoveBtn.addEventListener("click", removeProject);
 }
 
 export { initEvents };
