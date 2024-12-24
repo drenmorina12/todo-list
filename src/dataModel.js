@@ -30,13 +30,13 @@ class Project {
 }
 
 class Todo {
-  constructor(title, dueDate, priority) {
+  constructor(title, dueDate, priority, completed = false, notes = "") {
     this.title = title;
     this.dueDate = dueDate;
     this.priority = priority;
 
-    this.completed = false;
-    this.notes = "";
+    this.completed = completed;
+    this.notes = notes;
   }
 
   toggleCompleted() {

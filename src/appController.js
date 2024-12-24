@@ -7,35 +7,36 @@ import {
   showSelectedTodo,
 } from "./domManager";
 
-const projects = new ProjectManager();
+let projectsFromLocalStorage = JSON.parse(localStorage.getItem("projects"));
+let projects = new ProjectManager();
+
+let currentProject = null;
+let currentTodo = null;
 
 function createProject(title, isDefault = false) {
   let project = new Project(title, isDefault);
   projects.addProject(project);
 }
 
-let currentProject = null;
-let currentTodo = null;
-
 function tempTesting() {
-  createProject("Projekti2", true);
-  createProject("Mugiwara", true);
-  createProject("SUI");
+  projectsFromLocalStorage.forEach((project) => {
+    let newProject = new Project(project.title, project.isDefault);
+    let todos = project.todos;
+    todos.forEach((todo) => {
+      let newTodo = new Todo(
+        todo.title,
+        todo.dueDate,
+        todo.priority,
+        todo.completed,
+        todo.notes
+      );
+      newProject.addTodo(newTodo);
+    });
 
-  console.log(projects.getAllProjects());
+    projects.addProject(newProject);
+  });
 
   currentProject = projects.getProject(1);
-
-  let todo11 = new Todo("Todo1111", "today", 1);
-  let todo22 = new Todo("MUGIWARA", "tomorrow", 2);
-  let todo33 = new Todo("SEWYYY", "1", 1);
-
-  projects.getProject(1).addTodo(todo11);
-  projects.getProject(1).addTodo(todo22);
-  projects.getProject(1).addTodo(todo33);
-
-  projects.getProject(3).addTodo(todo11);
-
   currentTodo = currentProject.getTodos()[currentProject.getTodos().length - 1];
 }
 
