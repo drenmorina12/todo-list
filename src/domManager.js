@@ -168,7 +168,7 @@ function changeProjectTitle(project) {
   const currentProjectName = document.querySelector(".current-project-name");
 
   currentProjectName.textContent = project.title;
-  removeClearButton();
+  // removeClearButton();
 }
 
 // function removeClearButton() {
