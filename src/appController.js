@@ -7,6 +7,7 @@ import {
   showSelectedTodo,
 } from "./domManager";
 
+// TODO: Check if localStorage is empty
 let projectsFromLocalStorage = JSON.parse(localStorage.getItem("projects"));
 let projects = new ProjectManager();
 
@@ -55,6 +56,8 @@ function createNewTodo({
 }
 
 function renderProjectsAndTodos() {
+  // TODO: Refactor this function to be more efficient and only perform similar tasks
+  localStorage.setItem("projects", JSON.stringify(projects.getAllProjects()));
   renderTodos(currentProject.getTodos());
   renderProjects(projects.getAllProjects());
   changeProjectTitle(currentProject);
@@ -137,6 +140,7 @@ function updateNote(event) {
   const noteInput = event.target;
   if (noteInput.matches("#notes-input")) {
     currentTodo.addNotes(noteInput.value);
+    localStorage.setItem("projects", JSON.stringify(projects.getAllProjects()));
   }
 }
 
