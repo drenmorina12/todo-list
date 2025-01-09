@@ -7,19 +7,19 @@ import {
   showSelectedTodo,
 } from "./domManager";
 
-// TODO: Check if localStorage is empty
+// Check if localStorage is empty
 let projectsFromLocalStorage = JSON.parse(localStorage.getItem("projects"));
 let projects = new ProjectManager();
 
 let currentProject = null;
 let currentTodo = null;
 
-function createProject(title, isDefault = false) {
-  let project = new Project(title, isDefault);
-  projects.addProject(project);
-}
-
-function tempTesting() {
+if (!projectsFromLocalStorage || projectsFromLocalStorage.length === 0) {
+  // localStorage is empty, create a single project with the title "Personal"
+  createProject("Personal", true);
+  currentProject = projects.getProject(1);
+} else {
+  // localStorage is not empty, proceed with existing logic
   projectsFromLocalStorage.forEach((project) => {
     let newProject = new Project(project.title, project.isDefault);
     let todos = project.todos;
@@ -41,7 +41,14 @@ function tempTesting() {
   currentTodo = currentProject.getTodos()[currentProject.getTodos().length - 1];
 }
 
-tempTesting();
+function createProject(title, isDefault = false) {
+  let project = new Project(title, isDefault);
+  projects.addProject(project);
+}
+
+function tempTesting() {
+  // Existing logic for tempTesting
+}
 
 function createNewTodo({
   project = currentProject,
