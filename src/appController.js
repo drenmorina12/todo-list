@@ -7,23 +7,33 @@ import {
   showSelectedTodo,
 } from "./domManager";
 
-// Check if localStorage is empty
-let projectsFromLocalStorage = JSON.parse(localStorage.getItem("projects"));
+// Initialize project manager and current selections
 let projects = new ProjectManager();
-
 let currentProject = null;
 let currentTodo = null;
 
-if (!projectsFromLocalStorage || projectsFromLocalStorage.length === 0) {
-  // localStorage is empty, create a single project with the title "Personal"
-  createProject("Personal", true);
-  currentProject = projects.getProject(1);
-} else {
-  // localStorage is not empty, proceed with existing logic
+initializeProjects();
+
+// Function to initialize projects from localStorage or create a default project
+function initializeProjects() {
+  let projectsFromLocalStorage = JSON.parse(localStorage.getItem("projects"));
+
+  if (!projectsFromLocalStorage || projectsFromLocalStorage.length === 0) {
+    createProject("Personal", true);
+    currentProject = projects.getProject(1);
+  } else {
+    loadProjectsFromLocalStorage(projectsFromLocalStorage);
+    currentProject = projects.getProject(1);
+    currentTodo =
+      currentProject.getTodos()[currentProject.getTodos().length - 1];
+  }
+}
+
+// Function to load projects from localStorage
+function loadProjectsFromLocalStorage(projectsFromLocalStorage) {
   projectsFromLocalStorage.forEach((project) => {
     let newProject = new Project(project.title, project.isDefault);
-    let todos = project.todos;
-    todos.forEach((todo) => {
+    project.todos.forEach((todo) => {
       let newTodo = new Todo(
         todo.title,
         todo.dueDate,
@@ -33,21 +43,13 @@ if (!projectsFromLocalStorage || projectsFromLocalStorage.length === 0) {
       );
       newProject.addTodo(newTodo);
     });
-
     projects.addProject(newProject);
   });
-
-  currentProject = projects.getProject(1);
-  currentTodo = currentProject.getTodos()[currentProject.getTodos().length - 1];
 }
 
 function createProject(title, isDefault = false) {
   let project = new Project(title, isDefault);
   projects.addProject(project);
-}
-
-function tempTesting() {
-  // Existing logic for tempTesting
 }
 
 function createNewTodo({
@@ -58,12 +60,10 @@ function createNewTodo({
 }) {
   let todo = new Todo(title, dueDate, priority);
   project.addTodo(todo);
-
   renderProjectsAndTodos();
 }
 
 function renderProjectsAndTodos() {
-  // TODO: Refactor this function to be more efficient and only perform similar tasks
   localStorage.setItem("projects", JSON.stringify(projects.getAllProjects()));
   renderTodos(currentProject.getTodos());
   renderProjects(projects.getAllProjects());
@@ -81,22 +81,15 @@ function switchCurrentProject(event) {
   highlightInitialTodo();
 }
 
+// Function to remove the current project
 function removeProject() {
   projects.removeProject(currentProject);
   currentProject = projects.getAllProjects()[0];
   renderProjectsAndTodos();
 }
 
-// function isRemovableProject() {
-//   if (currentProject.isDefault) {
-//     return false;
-//   } else {
-//     return true;
-//   }
-// }
-
+// Function to switch the current todo
 function switchCurrentTodo(event) {
-  // TODO: Remove stuff that doesnt fit in this function to other function
   const clickedTodo = event.target.closest(".todo-item");
   if (!clickedTodo) return;
 
@@ -116,15 +109,15 @@ function switchCurrentTodo(event) {
 
   renderTodoDetails(currentTodo);
   showSelectedTodo(event);
-
-  // TODO
 }
 
+// Function to toggle the completion status of the current todo
 function checkTodo() {
   currentTodo.toggleCompleted();
   renderTodos(currentProject.getTodos());
 }
 
+// Function to create a project from a form submission
 function createProjectFromForm(event) {
   const projectTitle = document.querySelector("#project-title").value;
   const form = event.target;
@@ -136,6 +129,7 @@ function createProjectFromForm(event) {
   form.reset();
 }
 
+// Function to highlight the initial todo
 function highlightInitialTodo() {
   if (!currentTodo) return;
   document
@@ -143,6 +137,7 @@ function highlightInitialTodo() {
     .classList.add("selected");
 }
 
+// Function to update the notes of the current todo
 function updateNote(event) {
   const noteInput = event.target;
   if (noteInput.matches("#notes-input")) {
@@ -151,14 +146,15 @@ function updateNote(event) {
   }
 }
 
-function test() {
+// Function for testing purposes
+function initializeApp() {
   renderProjectsAndTodos();
   highlightInitialTodo();
   renderTodoDetails(currentTodo);
 }
 
 export {
-  test,
+  initializeApp,
   createNewTodo,
   switchCurrentProject,
   createProjectFromForm,

@@ -1,6 +1,6 @@
 import "./style.css";
-import { test } from "./appController";
+import { initializeApp } from "./appController";
 import { initEvents } from "./eventManager";
 
-test();
+initializeApp();
 initEvents();
